@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Information Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Customer Information Form</h2>
+    <form id="customerForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="address" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Highlight input fields on focus
+      $('input').focus(function() {
+        $(this).addClass('focused');
+      });
+
+      // Remove highlight from input fields on blur
+      $('input').blur(function() {
+        $(this).removeClass('focused');
+      });
+
+      // Handle form submission
+      $('#customerForm').submit(function(e) {
+        e.preventDefault(); // Prevent form submission
+
+        // Display success alert
+        var name = $('#name').val();
+        var address = $('#address').val();
+        var dob = $('#dob').val();
+
+        var alertMessage = 'Name: ' + name + '\nAddress: ' + address + '\nDate of Birth: ' + dob;
+        alert('Success!\n\n' + alertMessage);
+        
+        // Reset form
+        $(this)[0].reset();
+      });
+    });
+  </script>
+  <style>
+    .focused {
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  </style>
+</body>
+</html>
